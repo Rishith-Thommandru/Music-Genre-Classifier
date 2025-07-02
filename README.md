@@ -9,6 +9,7 @@
 
 🌐 [music-genre-classifier-recommender.streamlit.app](https://music-genre-classifier-recommender.streamlit.app)
 
+> ⚠️ **Note:** The first time launching the app (locally or online) may take **2–3 minutes** as it loads the model, scaler, encoder, and data into memory. This delay only occurs on the initial load; subsequent predictions will be faster.
 ---
 
 ## 📖 Overview

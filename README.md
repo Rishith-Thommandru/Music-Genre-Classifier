@@ -178,6 +178,15 @@ matplotlib
 
 ---
 
+## 🚀 Future Improvements
+
+- 🔗 Integrate with the **YouTube API** to fetch songs dynamically for recommendation, eliminating the dependency on local audio files.
+- 🗣️ Expand genre coverage using larger and more diverse music datasets beyond GTZAN.
+- 📱 Convert into a full-stack web application with user authentication, history tracking, and playlists.
+- ⚙️ Explore deployment on scalable cloud platforms like AWS, Azure, or Google Cloud.
+
+---
+
 ## 📜 License
 
 This project is for **educational and academic use only.**  

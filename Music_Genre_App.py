@@ -228,6 +228,7 @@ elif app_mode == "Prediction":
             st.error("Please upload a song first.")
         else:
             with st.spinner("Analyzing features and predicting genre..."):
+                st.info("⏳ Loading model and encoders... ⚠️ This may take **1–2 minutes on first prediction**.")
                 predicted_genre = process_and_predict(audio_buffer)
             st.success(f"**Predicted Genre:** {predicted_genre}")
             st.balloons()

@@ -237,10 +237,20 @@ elif app_mode == "Prediction":
 
 elif app_mode == "Explore Similar Tracks":
     st.header("🔍 Explore Similar Tracks")
-    st.markdown("Upload a `.wav` file and get 5 similar songs from the GTZAN dataset based on audio similarity (cosine similarity on extracted features).")
 
-    uploaded_file = st.file_uploader("Upload a WAV audio file", type=["wav"])
+    st.markdown("""
+    Upload a `.wav` file to get 5 similar songs based on audio content, using cosine similarity on extracted features.
 
+    > ⚠️ **Note:** Audio files from the GTZAN dataset are not included in this demo due to size and licensing restrictions.  
+    > Only filenames and similarity scores are shown here.  
+    > Audio playback will work **only if the GTZAN dataset is available locally** in the folder: `Dataset/genres_original`.
+
+    > 🎧 **Want to try it with your own songs and GTZAN audio samples?**  
+    👉 Check out the full version here:  
+    [Kaggle Notebook – Recommender System](https://www.kaggle.com/code/darthchaos/recommender-system)
+    """)
+
+    uploaded_file = st.file_uploader("🎵 Upload a WAV audio file", type=["wav"])
     audio_buffer = None
 
     if uploaded_file is not None:
@@ -252,15 +262,21 @@ elif app_mode == "Explore Similar Tracks":
         if audio_buffer is None:
             st.error("Please upload a song first.")
         else:
-            with st.spinner("Analyzing audio and finding similar tracks..."):
+            with st.spinner("Analyzing and finding similar tracks..."):
                 recommendations = recommend_top5_songs(audio_buffer)
 
             st.subheader("🎧 Top 5 Recommended Tracks")
             for i, (fname, sim) in enumerate(recommendations, 1):
+                st.markdown(f"**{i}. {fname}**      *Similarity score:* `{sim:.2f}`")
+
                 genre_folder = fname.split(".")[0]
                 audio_file_path = f"Dataset/genres_original/{genre_folder}/{fname}"
-                st.markdown(f"**{i}. {fname}**  \n*Similarity score:* `{sim:.2f}`")
-                st.audio(audio_file_path, format='audio/wav')
-            
-            st.markdown("> 🔊 **Note:** Recommendations are 30-second audio samples from the GTZAN dataset — not full tracks.")
+
+                try:
+                    with open(audio_file_path, 'rb') as f:
+                        audio_data = f.read()
+                        st.audio(audio_data, format='audio/wav')
+                except FileNotFoundError:
+                    st.info("🔇 Audio sample not available locally.")
+
 

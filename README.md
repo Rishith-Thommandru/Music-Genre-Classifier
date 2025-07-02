@@ -1,113 +1,195 @@
+
 # 🎧 Music Genre Classifier & Recommender System
 
-> **A Deep Learning and Signal Processing-based Web App for Audio Genre Classification and Recommendation**
+> **A Deep Learning and Signal Processing-powered Web App for Music Genre Classification and Recommendation**
 
 ---
 
-## 🔗 Live App
+## 🚀 Live Demo
 
-> 🌍 [music-genre-classifier-recommender.streamlit.app](https://music-genre-classifier-recommender.streamlit.app)
-
----
-
-## 📚 Project Overview
-
-The **Music Genre Classifier & Recommender** is a Streamlit web application that classifies the genre of an uploaded music clip using a CNN model trained on audio features, and recommends similar tracks based on feature similarity.
-
-Built using the **GTZAN genre dataset**, the app combines deep learning for genre prediction with cosine similarity for music recommendation — all powered by real-time audio signal analysis.
+🌐 [music-genre-classifier-recommender.streamlit.app](https://music-genre-classifier-recommender.streamlit.app)
 
 ---
 
-## 🚀 Features
+## 📖 Overview
 
-- 🎼 Genre Classification of uploaded `.wav` music files
-- 🧠 Trained CNN Model using GTZAN audio features
-- 🔁 Top-5 Music Recommendations using cosine similarity
-- 🎧 Deep Audio Feature Extraction using Librosa (MFCCs, Chroma, ZCR, Tempo, etc.)
-- 📊 Preprocessed GTZAN Track Database for similarity search
-- 🌐 Streamlit Web App with interactive audio preview and predictions
-- 📦 Easily deployable via Streamlit Community Cloud
+The **Music Genre Classifier & Recommender System** is a Streamlit-based web application that:
 
----
+- 🎼 **Classifies the genre** of an uploaded `.wav` music clip using a trained **Convolutional Neural Network (CNN)**.
+- 🔄 **Recommends 5 similar tracks** based on **audio feature similarity** using **cosine similarity**.
 
-
-## 🧠 Model Summary
-
-- Input: Extracted features from 30s audio clips
-- Architecture: Convolutional Neural Network (CNN)
-- Output: Predicted genre from 10 GTZAN classes
-- Prediction: Based on majority voting across segmented audio
+This project combines deep learning and signal processing with an interactive web interface to deliver real-time genre prediction and content-based music recommendations.
 
 ---
 
-## 🗂️ Dataset Used
+## ✨ Features
 
-- **Dataset**: [GTZAN Genre Collection](http://marsyas.info/downloads/datasets.html)
-- **Samples**: 1000 audio tracks
-- **Duration**: Each clip is 30 seconds
-- **Genres**:  blues, classical, country, disco, hiphop, jazz, metal, pop, reggae, rock
-
-
----
-
-## 🛠️ Technologies Used
-
-| Layer         | Tools/Frameworks                        |
-|---------------|------------------------------------------|
-| Web App       | Streamlit                               |
-| ML Framework  | TensorFlow / Keras                      |
-| Feature Eng.  | Librosa, NumPy, SciPy                   |
-| Recommendation| Scikit-learn (cosine similarity)        |
-| Deployment    | Streamlit Community Cloud               |
-| Audio Files   | `.wav` format (mono, 22050 Hz expected) |
-
----
-
-
-## 📂 Project Structure
-
-| File / Folder                  | Description                                            |
-|-------------------------------|---------------------------------------------------------|
-| `Music_Genre_App.py`          | Main Streamlit app script                               |
-| `requirements.txt`            | Required packages                                       |
-| `runtime.txt`                 | Python version for deployment                           |
-| `model/`                      | Folder containing trained model and preprocessing tools |
-| `MusicGenreClassifier.keras`  | Trained CNN model                                       |
-| `minmax_scaler.pkl`           | Scaler for feature normalization                        |
-| `label_encoder.pkl`           | Label encoder for genres                                |
-| `data/gtzan_data.joblib`      | Preprocessed GTZAN track features for recommendation    |
-| `Input/genres_original/`      | GTZAN dataset audio clips (used for recommendations)    |
-| `README.md`                   | Project documentation                                   |
+- 🎵 **Genre Classification** for `.wav` audio files.
+- 🧠 **CNN Model** trained on GTZAN dataset audio features.
+- 🔁 **Top-5 Similar Song Recommendations** using cosine similarity.
+- 🎧 **Audio Feature Extraction** including:
+  - MFCCs
+  - Chroma
+  - Spectral Centroid, Rolloff, Bandwidth
+  - Zero Crossing Rate
+  - Tempo
+- 🌐 **Streamlit Web App** with:
+  - Genre prediction
+  - Audio preview
+  - Interactive song recommendations
+- 🗒️ **Jupyter Notebooks** for:
+  - Training the CNN model
+  - Testing and validating the model
+  - Feature extraction and preprocessing
+- 🚀 Easy deployment via Streamlit Community Cloud.
 
 ---
 
+## 🧠 Model Architecture
 
-## 🏗️ How to Run (locally)
+- **Input:** Audio features extracted from 30-second `.wav` files.
+- **Architecture:** Convolutional Neural Network (CNN).
+- **Output:** One of 10 genre classes.
+- **Prediction Method:** Majority voting over segmented audio chunks for robust accuracy.
 
-1. Install Python 3.10+ and ensure `pip` is available.
-2. Clone the repository:
+---
+
+## 📂 Dataset
+
+- **Dataset:** [GTZAN Genre Collection](http://marsyas.info/downloads/datasets.html)
+- **Size:** 1000 audio tracks (30 seconds each)
+- **Genres:**
+  - Blues, Classical, Country, Disco, HipHop, Jazz, Metal, Pop, Reggae, Rock
+- ⚠️ *Note:* The dataset is primarily based on songs from the **1970s to early 2000s**.
+
+---
+
+## 🔧 Tech Stack
+
+| Layer            | Tools/Frameworks                      |
+|------------------|----------------------------------------|
+| Web App          | Streamlit                             |
+| Machine Learning | TensorFlow / Keras                    |
+| Feature Extraction| Librosa, NumPy, SciPy                |
+| Recommendation   | Scikit-learn (cosine similarity)      |
+| Deployment       | Streamlit Community Cloud             |
+| Notebook Support | Jupyter, IPython                      |
+| Audio Format     | `.wav` (mono, 22050 Hz sample rate)   |
+
+---
+
+## 📁 Folder & File Structure
+
+| File / Folder                       | Description                                              |
+|-------------------------------------|----------------------------------------------------------|
+| `Music_Genre_App.py`                | Main Streamlit web app                                   |
+| `Train_MusicGenre_Classifier.ipynb` | Jupyter Notebook for model training                      |
+| `Test_MusicGenreClassifier.ipynb`   | Jupyter Notebook for model testing and validation        |
+| `MusicGenreClassifier.keras`        | Trained CNN model                                        |
+| `minmax_scaler.pkl`                 | Scaler for feature normalization                         |
+| `label_encoder.pkl`                 | Label encoder for genres                                 |
+| `gtzan_data.joblib`                 | Preprocessed GTZAN track features for recommendation     |
+| `requirements.txt`                  | Required Python packages                                 |
+| `README.md`                         | Project documentation                                    |
+
+---
+
+## 🔬 Jupyter Notebooks 📓
+
+### ✅ **Train_MusicGenre_Classifier.ipynb**
+- Preprocesses audio features.
+- Defines and trains the CNN model.
+- Performs feature scaling and label encoding.
+- Saves the model (`.keras`), scaler (`.pkl`), and encoder (`.pkl`).
+
+### ✅ **Test_MusicGenreClassifier.ipynb**
+- Loads the saved model and scaler.
+- Tests genre predictions on sample audio files.
+- Evaluates accuracy and performance metrics.
+- Can be used for experimentation with different audio clips.
+
+> The notebooks are useful for understanding the complete **ML pipeline** — from preprocessing and training to testing — and for extending or modifying the model if needed.
+
+---
+
+## 💻 Local Installation Guide
+
+### ✅ Requirements
+
+- Python 3.10+
+- pip (Python package installer)
+
+### 🔧 Steps
+
+1. **Clone the repository:**
    ```bash
-   git clone https://github.com/Rishith-Thommandru/music-genre-classifier
+   git clone https://github.com/Rishith-Thommandru/music-genre-classifier.git
    cd music-genre-classifier
-3. Install the required dependencies
+   ```
+
+2. **Install dependencies:**
    ```bash
    pip install -r requirements.txt
-4. Run streamlit app
+   ```
+
+3. **Run the Streamlit app:**
    ```bash
    streamlit run Music_Genre_App.py
+   ```
+
+4. **Or open Jupyter notebooks:**
+   ```bash
+   jupyter notebook
+   ```
+   - Use the training and testing notebooks for experimenting or retraining the model.
 
 ---
 
-## 👨‍💻 Authors
+## 🔗 Requirements
 
-- **Rishith Thommandru** — [LinkedIn](https://www.linkedin.com/in/rishith-thommandru)
+```txt
+streamlit
+librosa
+scikit-learn
+numpy
+pandas
+joblib
+tensorflow
+soundfile
+scipy
+matplotlib
+```
+
+---
+
+## 🔥 How It Works
+
+### 🎼 **Genre Classification**
+- Splits uploaded audio into segments.
+- Extracts audio features (MFCCs, chroma, spectral features, etc.).
+- Predicts genre for each segment using the CNN model.
+- Uses majority voting for the final prediction.
+
+### 🎧 **Recommendation System**
+- Extracts features from uploaded audio.
+- Compares with precomputed features from GTZAN dataset.
+- Computes cosine similarity and returns the **top 5 most similar tracks**.
 
 ---
 
 ## 📜 License
 
-This project is developed for educational and academic demonstration purposes only.  
-It uses the [GTZAN Genre Collection](http://marsyas.info/downloads/datasets.html), which is publicly available for research and academic use.  
-All rights to the original audio content belong to their respective owners.
+This project is for **educational and academic use only.**  
+It uses the [GTZAN Genre Collection](https://www.tensorflow.org/datasets/catalog/gtzan) for research purposes.  
+All rights to the original audio files belong to their respective owners.
 
 ---
+
+## 👨‍💻 Author
+
+- **Rishith Thommandru**  
+  [LinkedIn](https://www.linkedin.com/in/rishith-thommandru) • [GitHub](https://github.com/Rishith-Thommandru)
+
+---
+
+## ⭐ Give this repository a ⭐ if you find it helpful!

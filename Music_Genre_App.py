@@ -6,7 +6,6 @@ from scipy.stats import mode
 import joblib
 import random
 
-from IPython import display as ipd 
 
 from tensorflow.keras.models import load_model
 

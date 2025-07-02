@@ -191,7 +191,7 @@ if(app_mode=="Home"):
 
     ### 🔗 More Info & Source Code
 
-    Check out the [GitHub repository and README](https://github.com/your-username/your-repo-name) for:
+    Check out the [GitHub repository and README](https://github.com/Rishith-Thommandru/Music-Genre-Classifier) for:
     - 📁 Dataset details
     - 🧠 Model architecture
     - 🔧 Setup instructions and dependencies
@@ -222,14 +222,16 @@ elif app_mode == "Prediction":
         st.audio(audio_buffer, format='audio/wav')
 
 
-    
+     
     if st.button("🎯 Predict Genre"):
         if audio_buffer is None:
             st.error("Please upload a song first.")
         else:
             with st.spinner("Analyzing features and predicting genre..."):
-                st.info("⏳ Loading model and encoders... ⚠️ This may take **1–2 minutes on first prediction**.")
+                warning_pred=st.empty()  
+                warning_pred.info("⏳ Loading model and encoders... ⚠️ This may take **1–2 minutes on first prediction**.")
                 predicted_genre = process_and_predict(audio_buffer)
+                warning_pred.empty()
             st.success(f"**Predicted Genre:** {predicted_genre}")
             st.balloons()
 
@@ -263,7 +265,10 @@ elif app_mode == "Explore Similar Tracks":
             st.error("Please upload a song first.")
         else:
             with st.spinner("Analyzing and finding similar tracks..."):
+                warning_pred=st.empty()  
+                warning_pred.info("⏳ Loading model and encoders... ⚠️ This may take **1–2 minutes on first prediction**.")
                 recommendations = recommend_top5_songs(audio_buffer)
+                warning_pred.empty()
 
             st.subheader("🎧 Top 5 Recommended Tracks")
             for i, (fname, sim) in enumerate(recommendations, 1):
